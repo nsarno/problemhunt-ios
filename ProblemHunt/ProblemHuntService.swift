@@ -27,27 +27,42 @@ class ProblemHuntService {
         return Static.instance!
     }
     
-    func connect(username:String, password:String, callback: () -> Void) {
-//        let resource = "/auth"
-//        let params = ["user": ["email": username, "password": password]] as Dictionary<String, Dictionary<String, String>>
-//        post(resource, params: params, callback: callback)
-        callback()
+    func connect(username:String, password:String, callback: (NSDictionary) -> Void) {
+        post("/auth", params: ["user": ["email": username, "password": password]], callback: callback)
     }
     
-    func post(resource: String, params: Dictionary<String, Dictionary<String, String>>, callback: () -> Void) {
+    func rooms(callback: (NSDictionary) -> Void) {
+        get("/rooms", params: nil, callback: callback)
+    }
+    
+    func get(resource: String, params: Dictionary<String, Dictionary<String, String>>?, callback: (NSDictionary) -> Void) {
+        httpRequest("GET", resource: resource, params: params, callback: callback)
+    }
+    
+    func post(resource: String, params: Dictionary<String, Dictionary<String, String>>?, callback: (NSDictionary) -> Void) {
+        httpRequest("POST", resource: resource, params: params, callback: callback)
+    }
+    
+    func httpRequest(method: String, resource: String, params: Dictionary<String, Dictionary<String, String>>?, callback: (NSDictionary) -> Void) {
         var request = NSMutableURLRequest(URL: NSURL(string: "\(self.baseURL)\(resource)")!)
         var session = NSURLSession.sharedSession()
-        request.HTTPMethod = "POST"
+        request.HTTPMethod = method
         
         var err: NSError?
-        request.HTTPBody = NSJSONSerialization.dataWithJSONObject(params, options: nil, error: &err)
+        if (params != nil) {
+            request.HTTPBody = NSJSONSerialization.dataWithJSONObject(params!, options: nil, error: &err)
+        }
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
+        if (self.token != nil) {
+            // println("Authorization: Bearer \(self.token!)")
+            request.addValue("Bearer \(self.token!)", forHTTPHeaderField: "Authorization")
+        }
         
         var task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
-            println("Response: \(response)")
+            // println("Response: \(response)")
             var strData = NSString(data: data, encoding: NSUTF8StringEncoding)
-            println("Body: \(strData)")
+            // println("Body: \(strData)")
             var err: NSError?
             var json = NSJSONSerialization.JSONObjectWithData(data, options: .MutableLeaves, error: &err) as? NSDictionary
             
@@ -62,12 +77,10 @@ class ProblemHuntService {
                 // check and make sure that json has a value using optional binding.
                 if let parseJSON = json {
                     // Okay, the parsedJSON is here, let's get the value for 'success' out of it
-                    self.token = parseJSON["token"] as? String
-                    println("Token: \(self.token)")
-                    callback()
+                    callback(parseJSON)
                 }
                 else {
-                    // Woa, okay the json object was nil, something went worng. Maybe the server isn't running?
+                    // Woa, okay the json object was nil, something went wrong. Maybe the server isn't running?
                     let jsonStr = NSString(data: data, encoding: NSUTF8StringEncoding)
                     println("Error could not parse JSON: \(jsonStr)")
                 }
