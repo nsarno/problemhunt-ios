@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1190B7261A1CAA12005C0BE4 /* ProblemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1190B7251A1CAA12005C0BE4 /* ProblemsViewController.swift */; };
 		119791511A1B9FE700F23EE1 /* RoomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119791501A1B9FE700F23EE1 /* RoomsViewController.swift */; };
+		11E362781A1D0AB00096E2B9 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E362771A1D0AB00096E2B9 /* KeychainService.swift */; };
 		11EF7CC31A0CCB2600E3CCDD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EF7CC21A0CCB2600E3CCDD /* AppDelegate.swift */; };
 		11EF7CC51A0CCB2600E3CCDD /* ConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EF7CC41A0CCB2600E3CCDD /* ConnectViewController.swift */; };
 		11EF7CC81A0CCB2600E3CCDD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11EF7CC61A0CCB2600E3CCDD /* Main.storyboard */; };
@@ -33,6 +34,7 @@
 		1190B7251A1CAA12005C0BE4 /* ProblemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProblemsViewController.swift; sourceTree = "<group>"; };
 		1190B7271A1CAB6A005C0BE4 /* ProblemHunt-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ProblemHunt-Bridging-Header.h"; sourceTree = "<group>"; };
 		119791501A1B9FE700F23EE1 /* RoomsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomsViewController.swift; sourceTree = "<group>"; };
+		11E362771A1D0AB00096E2B9 /* KeychainService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		11EF7CBD1A0CCB2600E3CCDD /* ProblemHunt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProblemHunt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11EF7CC11A0CCB2600E3CCDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		11EF7CC21A0CCB2600E3CCDD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				11EF7CC21A0CCB2600E3CCDD /* AppDelegate.swift */,
+				11E362771A1D0AB00096E2B9 /* KeychainService.swift */,
 				11EF7CE61A0F789100E3CCDD /* ProblemHuntService.swift */,
 				11EF7CC41A0CCB2600E3CCDD /* ConnectViewController.swift */,
 				119791501A1B9FE700F23EE1 /* RoomsViewController.swift */,
@@ -287,6 +290,7 @@
 				11EF7CC51A0CCB2600E3CCDD /* ConnectViewController.swift in Sources */,
 				119791511A1B9FE700F23EE1 /* RoomsViewController.swift in Sources */,
 				11EF7CC31A0CCB2600E3CCDD /* AppDelegate.swift in Sources */,
+				11E362781A1D0AB00096E2B9 /* KeychainService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,5 +11,6 @@
 
 #import <UIKit/UIKit.h>
 #import <MDCSwipeToChoose/MDCSwipeToChoose.h>
+#import <SimpleKeychain/A0SimpleKeychain.h>
 
 #endif
