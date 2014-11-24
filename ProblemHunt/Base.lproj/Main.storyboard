@@ -96,7 +96,14 @@
                             <constraint firstItem="sS1-RY-QW1" firstAttribute="bottom" secondItem="CNi-CG-kAL" secondAttribute="top" id="zoy-xu-Awv"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Rooms" id="V1K-vV-XDy"/>
+                    <navigationItem key="navigationItem" title="Rooms" id="V1K-vV-XDy">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="IDY-Zd-dA2">
+                            <connections>
+                                <action selector="logout:" destination="s96-th-GPJ" id="ru9-oX-aFO"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="New" id="tk9-zz-1D1"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="sS1-RY-QW1" id="MvI-HF-daY"/>
                     </connections>
@@ -105,10 +112,10 @@
             </objects>
             <point key="canvasLocation" x="2015" y="337"/>
         </scene>
-        <!--Problems View Controller-->
+        <!--Problems-->
         <scene sceneID="9rT-Yt-ul6">
             <objects>
-                <viewController id="JBW-GL-wtW" customClass="ProblemsViewController" customModule="ProblemHunt" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Problems" id="JBW-GL-wtW" customClass="RoomDetailsViewController" customModule="ProblemHunt" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ick-nh-eba"/>
                         <viewControllerLayoutGuide type="bottom" id="hFW-si-1sM"/>
@@ -117,14 +124,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ge7-Qi-3oU">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ZDo-dj-OMV">
+                                <rect key="frame" x="0.0" y="1" width="600" height="599"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProblemCell" id="Mbh-yg-eMh">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RoomCell" id="bk0-hP-TKe">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Mbh-yg-eMh" id="MUN-Ke-fw5">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bk0-hP-TKe" id="cAC-dZ-mar">
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -134,7 +141,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="tableView" destination="ge7-Qi-3oU" id="n3O-5u-JzJ"/>
+                        <outlet property="tableView" destination="ZDo-dj-OMV" id="HqW-tk-mgO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="adb-4e-xqT" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -29,14 +29,17 @@ class RoomsViewController : UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        println(segue.identifier!)
         if segue.identifier! == "ShowProblemsSegue" {
             let cell = sender as UITableViewCell
             let indexPath = self.tableView.indexPathForCell(cell) as NSIndexPath!
-            let controller = segue.destinationViewController as ProblemsViewController
-            println(self.rooms[indexPath.row]["problems"])
-            controller.problems = self.rooms[indexPath.row]["problems"]! as NSArray
+            let controller = segue.destinationViewController as RoomDetailsViewController
+            controller.room = Room(json: self.rooms[indexPath.row] as [String: AnyObject])
         }
+    }
+
+    @IBAction func logout(sender: AnyObject) {
+        ProblemHuntService.sharedInstance.logout()
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 
     // MARK: - Table View
@@ -46,14 +49,13 @@ class RoomsViewController : UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return rooms.count
+        return self.rooms.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("RoomCell", forIndexPath: indexPath) as UITableViewCell
         
-        let room = rooms[indexPath.row] as NSDictionary
-        println("cellForRowAtIndexPath (\(indexPath.row))")
+        let room = self.rooms[indexPath.row] as NSDictionary
         cell.textLabel.text = room["name"] as String?
         return cell
     }

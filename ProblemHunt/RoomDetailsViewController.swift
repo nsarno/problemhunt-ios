@@ -1,5 +1,5 @@
 //
-//  ProblemsViewController.swift
+//  RoomDetailsViewController.swift
 //  ProblemHunt
 //
 //  Created by Arnaud Mesureur on 19/11/14.
@@ -8,23 +8,18 @@
 
 import UIKit
 
-class ProblemsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class RoomDetailsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
-
-    var problems : NSArray
     
-    required init(coder aDecoder: NSCoder) {
-        self.problems = []
-        super.init(coder: aDecoder)
-    }
+    var room = Room()
     
     override func viewDidLoad() {
-        println(self.problems)
+        super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
     }
-    
+        
     // MARK: - Table View
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -32,16 +27,13 @@ class ProblemsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.problems.count
+        return self.room.problems.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ProblemCell", forIndexPath: indexPath) as UITableViewCell
-        
-        let problem = problems[indexPath.row] as NSDictionary
-        println("cellForRowAtIndexPath (\(indexPath.row))")
-        cell.textLabel.text = problem["description"] as String?
+        let cell = tableView.dequeueReusableCellWithIdentifier("RoomCell", forIndexPath: indexPath) as UITableViewCell
+        let problem = self.room.problems[indexPath.row] as Problem
+        cell.textLabel.text = problem.description
         return cell
-    }
-
+    }  
 }

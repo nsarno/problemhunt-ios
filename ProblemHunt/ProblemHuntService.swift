@@ -10,8 +10,11 @@ import Foundation
 
 class ProblemHuntService {
 
+//#if os(iOS)
+//    let baseURL = "https://problemhunt.herokuapp.com"
+//#else
     let baseURL = "http://0.0.0.0:8080"
-    var token: String?
+//#endif
 
     class var sharedInstance: ProblemHuntService {
 
@@ -25,6 +28,24 @@ class ProblemHuntService {
         }
         
         return Static.instance!
+    }
+    
+    func setToken(token: NSString) {
+        A0SimpleKeychain().setString(token, forKey:"problemhunt-user-jwt")
+    }
+    
+    func logout() {
+        A0SimpleKeychain().deleteEntryForKey("problemhunt-user-jwt")
+    }
+    
+    func token() -> NSString {
+        return A0SimpleKeychain().stringForKey("problemhunt-user-jwt")!
+    }
+    
+    func isConnected() -> Bool {
+        let keychain = A0SimpleKeychain()
+        let str = keychain.stringForKey("problemhunt-user-jwt")
+        return str != nil
     }
     
     func connect(username:String, password:String, callback: (NSDictionary) -> Void) {
@@ -54,9 +75,9 @@ class ProblemHuntService {
         }
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
-        if (self.token != nil) {
+        if self.isConnected() {
             // println("Authorization: Bearer \(self.token!)")
-            request.addValue("Bearer \(self.token!)", forHTTPHeaderField: "Authorization")
+            request.addValue("Bearer \(self.token())", forHTTPHeaderField: "Authorization")
         }
         
         var task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in

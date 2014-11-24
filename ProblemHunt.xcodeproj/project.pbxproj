@@ -7,9 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1190B7261A1CAA12005C0BE4 /* ProblemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1190B7251A1CAA12005C0BE4 /* ProblemsViewController.swift */; };
+		1190B7261A1CAA12005C0BE4 /* RoomDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1190B7251A1CAA12005C0BE4 /* RoomDetailsViewController.swift */; };
 		119791511A1B9FE700F23EE1 /* RoomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119791501A1B9FE700F23EE1 /* RoomsViewController.swift */; };
-		11E362781A1D0AB00096E2B9 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E362771A1D0AB00096E2B9 /* KeychainService.swift */; };
 		11EF7CC31A0CCB2600E3CCDD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EF7CC21A0CCB2600E3CCDD /* AppDelegate.swift */; };
 		11EF7CC51A0CCB2600E3CCDD /* ConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EF7CC41A0CCB2600E3CCDD /* ConnectViewController.swift */; };
 		11EF7CC81A0CCB2600E3CCDD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11EF7CC61A0CCB2600E3CCDD /* Main.storyboard */; };
@@ -17,6 +16,8 @@
 		11EF7CCD1A0CCB2600E3CCDD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11EF7CCB1A0CCB2600E3CCDD /* LaunchScreen.xib */; };
 		11EF7CD91A0CCB2600E3CCDD /* ProblemHuntTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EF7CD81A0CCB2600E3CCDD /* ProblemHuntTests.swift */; };
 		11EF7CE71A0F789100E3CCDD /* ProblemHuntService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EF7CE61A0F789100E3CCDD /* ProblemHuntService.swift */; };
+		11FCE1001A23718600294DC0 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FCE0FF1A23718600294DC0 /* Room.swift */; };
+		11FCE1031A2381E400294DC0 /* Problem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FCE1021A2381E400294DC0 /* Problem.swift */; };
 		B30D0A6AF336DE60EB3F4E94 /* libPods-ProblemHunt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 77385393BA58BD15970BFA61 /* libPods-ProblemHunt.a */; };
 /* End PBXBuildFile section */
 
@@ -31,10 +32,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1190B7251A1CAA12005C0BE4 /* ProblemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProblemsViewController.swift; sourceTree = "<group>"; };
+		1190B7251A1CAA12005C0BE4 /* RoomDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomDetailsViewController.swift; sourceTree = "<group>"; };
 		1190B7271A1CAB6A005C0BE4 /* ProblemHunt-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ProblemHunt-Bridging-Header.h"; sourceTree = "<group>"; };
 		119791501A1B9FE700F23EE1 /* RoomsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomsViewController.swift; sourceTree = "<group>"; };
-		11E362771A1D0AB00096E2B9 /* KeychainService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		11EF7CBD1A0CCB2600E3CCDD /* ProblemHunt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProblemHunt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11EF7CC11A0CCB2600E3CCDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		11EF7CC21A0CCB2600E3CCDD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -46,6 +46,8 @@
 		11EF7CD71A0CCB2600E3CCDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		11EF7CD81A0CCB2600E3CCDD /* ProblemHuntTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemHuntTests.swift; sourceTree = "<group>"; };
 		11EF7CE61A0F789100E3CCDD /* ProblemHuntService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProblemHuntService.swift; sourceTree = "<group>"; };
+		11FCE0FF1A23718600294DC0 /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
+		11FCE1021A2381E400294DC0 /* Problem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Problem.swift; sourceTree = "<group>"; };
 		322ED48D795EE27E182CC57F /* Pods-ProblemHunt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProblemHunt.release.xcconfig"; path = "Pods/Target Support Files/Pods-ProblemHunt/Pods-ProblemHunt.release.xcconfig"; sourceTree = "<group>"; };
 		4FEEB66E41507316E1D1B01E /* Pods-ProblemHunt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProblemHunt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ProblemHunt/Pods-ProblemHunt.debug.xcconfig"; sourceTree = "<group>"; };
 		77385393BA58BD15970BFA61 /* libPods-ProblemHunt.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ProblemHunt.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,11 +96,12 @@
 			isa = PBXGroup;
 			children = (
 				11EF7CC21A0CCB2600E3CCDD /* AppDelegate.swift */,
-				11E362771A1D0AB00096E2B9 /* KeychainService.swift */,
 				11EF7CE61A0F789100E3CCDD /* ProblemHuntService.swift */,
 				11EF7CC41A0CCB2600E3CCDD /* ConnectViewController.swift */,
 				119791501A1B9FE700F23EE1 /* RoomsViewController.swift */,
-				1190B7251A1CAA12005C0BE4 /* ProblemsViewController.swift */,
+				1190B7251A1CAA12005C0BE4 /* RoomDetailsViewController.swift */,
+				11FCE1021A2381E400294DC0 /* Problem.swift */,
+				11FCE0FF1A23718600294DC0 /* Room.swift */,
 				11EF7CC61A0CCB2600E3CCDD /* Main.storyboard */,
 				11EF7CC91A0CCB2600E3CCDD /* Images.xcassets */,
 				11EF7CCB1A0CCB2600E3CCDD /* LaunchScreen.xib */,
@@ -285,12 +288,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1190B7261A1CAA12005C0BE4 /* ProblemsViewController.swift in Sources */,
+				11FCE1031A2381E400294DC0 /* Problem.swift in Sources */,
+				1190B7261A1CAA12005C0BE4 /* RoomDetailsViewController.swift in Sources */,
 				11EF7CE71A0F789100E3CCDD /* ProblemHuntService.swift in Sources */,
+				11FCE1001A23718600294DC0 /* Room.swift in Sources */,
 				11EF7CC51A0CCB2600E3CCDD /* ConnectViewController.swift in Sources */,
 				119791511A1B9FE700F23EE1 /* RoomsViewController.swift in Sources */,
 				11EF7CC31A0CCB2600E3CCDD /* AppDelegate.swift in Sources */,
-				11E362781A1D0AB00096E2B9 /* KeychainService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
