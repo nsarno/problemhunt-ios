@@ -6,7 +6,6 @@ xcodeproj 'ProblemHunt.xcodeproj/'
 source 'https://github.com/CocoaPods/Specs.git'
 
 target 'ProblemHunt' do
-  pod 'MDCSwipeToChoose'
   pod 'SimpleKeychain', '~> 0.1'
 end
 

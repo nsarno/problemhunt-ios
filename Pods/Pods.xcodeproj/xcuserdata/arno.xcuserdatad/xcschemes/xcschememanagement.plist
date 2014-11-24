@@ -4,11 +4,6 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-ProblemHunt-MDCSwipeToChoose.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-ProblemHunt-SimpleKeychain.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -22,17 +17,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>13411D57FF09C0555CA5D1E3</key>
+		<key>A09247FEA7BC944EEB1C4E54</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AA9878FAAAAF6475BC3A121F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>BCDDC6612C54A84610A54D93</key>
+		<key>E2D4C31A4E5B9A09C9A327D9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
