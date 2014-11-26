@@ -72,6 +72,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		116E24121A262B1900F901B5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				11FCE1021A2381E400294DC0 /* Problem.swift */,
+				11FCE0FF1A23718600294DC0 /* Room.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		116E24131A262B2500F901B5 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				11EF7CC41A0CCB2600E3CCDD /* ConnectViewController.swift */,
+				119791501A1B9FE700F23EE1 /* RoomsViewController.swift */,
+				1190B7251A1CAA12005C0BE4 /* RoomDetailsViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		116E24141A262B2E00F901B5 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				11EF7CE61A0F789100E3CCDD /* ProblemHuntService.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
 		11EF7CB41A0CCB2600E3CCDD = {
 			isa = PBXGroup;
 			children = (
@@ -96,12 +123,9 @@
 			isa = PBXGroup;
 			children = (
 				11EF7CC21A0CCB2600E3CCDD /* AppDelegate.swift */,
-				11EF7CE61A0F789100E3CCDD /* ProblemHuntService.swift */,
-				11EF7CC41A0CCB2600E3CCDD /* ConnectViewController.swift */,
-				119791501A1B9FE700F23EE1 /* RoomsViewController.swift */,
-				1190B7251A1CAA12005C0BE4 /* RoomDetailsViewController.swift */,
-				11FCE1021A2381E400294DC0 /* Problem.swift */,
-				11FCE0FF1A23718600294DC0 /* Room.swift */,
+				116E24141A262B2E00F901B5 /* Services */,
+				116E24131A262B2500F901B5 /* Controllers */,
+				116E24121A262B1900F901B5 /* Models */,
 				11EF7CC61A0CCB2600E3CCDD /* Main.storyboard */,
 				11EF7CC91A0CCB2600E3CCDD /* Images.xcassets */,
 				11EF7CCB1A0CCB2600E3CCDD /* LaunchScreen.xib */,
