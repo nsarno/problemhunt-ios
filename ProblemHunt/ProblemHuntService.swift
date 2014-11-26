@@ -48,20 +48,32 @@ class ProblemHuntService {
         return str != nil
     }
     
+    func createRoom(name: String, callback: (NSDictionary) -> Void) {
+        self.post("/rooms", params: ["room": ["name": name]], callback: callback)
+    }
+
+    func createProblem(desc: String, roomId: Int, callback: (NSDictionary) -> Void) {
+        self.post("/rooms/\(roomId)/problems", params: ["problem": ["description": desc]], callback: callback)
+    }
+
     func connect(username:String, password:String, callback: (NSDictionary) -> Void) {
-        post("/auth", params: ["user": ["email": username, "password": password]], callback: callback)
+        self.post("/auth", params: ["user": ["email": username, "password": password]], callback: callback)
     }
     
     func rooms(callback: (NSDictionary) -> Void) {
-        get("/rooms", params: nil, callback: callback)
+        self.get("/rooms", params: nil, callback: callback)
+    }
+    
+    func problems(roomId: Int, callback: (NSDictionary) -> Void) {
+        self.get("/rooms/\(roomId)/problems", params: nil, callback: callback)
     }
     
     func get(resource: String, params: Dictionary<String, Dictionary<String, String>>?, callback: (NSDictionary) -> Void) {
-        httpRequest("GET", resource: resource, params: params, callback: callback)
+        self.httpRequest("GET", resource: resource, params: params, callback: callback)
     }
     
     func post(resource: String, params: Dictionary<String, Dictionary<String, String>>?, callback: (NSDictionary) -> Void) {
-        httpRequest("POST", resource: resource, params: params, callback: callback)
+        self.httpRequest("POST", resource: resource, params: params, callback: callback)
     }
     
     func httpRequest(method: String, resource: String, params: Dictionary<String, Dictionary<String, String>>?, callback: (NSDictionary) -> Void) {

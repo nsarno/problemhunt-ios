@@ -10,6 +10,7 @@ import Foundation
 
 class Room {
 
+    let id: Int
     let name : String
     let problems : [Problem]
     let followersCount : Int
@@ -17,6 +18,7 @@ class Room {
     let isOwner : Bool
     
     init() {
+        self.id = 0
         self.name = "Unknown"
         self.problems = []
         self.followersCount = 0
@@ -25,6 +27,7 @@ class Room {
     }
     
     init(json: [String: AnyObject]) {
+        self.id = json["id"] as Int
         self.name = json["name"] as String
         let problemsJson = json["problems"] as [[String: AnyObject]]
         self.problems = problemsJson.map({

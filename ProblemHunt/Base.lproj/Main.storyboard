@@ -102,7 +102,11 @@
                                 <action selector="logout:" destination="s96-th-GPJ" id="ru9-oX-aFO"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="New" id="tk9-zz-1D1"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="tk9-zz-1D1">
+                            <connections>
+                                <action selector="createRoom:" destination="s96-th-GPJ" id="NZ0-vk-F73"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="sS1-RY-QW1" id="MvI-HF-daY"/>
