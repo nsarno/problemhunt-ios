@@ -7,18 +7,23 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 class Problem {
 
+    let id : Int
     let description : String
     let upvotesCount : Int
     let isUpvoted : Bool
+    let upvoteId : Int
     let isAuthor : Bool
     
-    init(json: [String: AnyObject]) {
-        self.description = json["description"] as String
-        self.isAuthor = json["author"] as Int == 1
-        self.isUpvoted = json["upvoted"] as Int == 1
-        self.upvotesCount = json["upvotes_count"] as Int
+    init(json: JSON) {
+        self.id = json["id"].intValue
+        self.description = json["description"].stringValue
+        self.isAuthor = json["author"].boolValue
+        self.isUpvoted = json["upvoted"].boolValue
+        self.upvoteId = json["upvote_id"].intValue
+        self.upvotesCount = json["upvotes_count"].intValue
     }
 }

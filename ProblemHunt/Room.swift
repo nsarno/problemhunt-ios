@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 class Room {
 
@@ -26,15 +27,15 @@ class Room {
         self.isOwner = false
     }
     
-    init(json: [String: AnyObject]) {
-        self.id = json["id"] as Int
-        self.name = json["name"] as String
-        let problemsJson = json["problems"] as [[String: AnyObject]]
-        self.problems = problemsJson.map({
-            Problem(json: $0)
-        })
-        self.followersCount = json["followers_count"] as Int
-        self.isRegistered = json["registered"] as Int == 1
-        self.isOwner = json["owner"] as Int == 1
+    init(json: JSON) {
+        self.id = json["id"].intValue
+        self.name = json["name"].stringValue
+        let problemsJson = json["problems"].arrayValue
+        self.problems = problemsJson.map { (value: JSON) in
+            return Problem(json: value)
+        }
+        self.followersCount = json["followers_count"].intValue
+        self.isRegistered = json["registered"].boolValue
+        self.isOwner = json["owner"].boolValue
     }
 }

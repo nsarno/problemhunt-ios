@@ -7,8 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		116E24171A27A1A600F901B5 /* ProblemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116E24161A27A1A600F901B5 /* ProblemCell.swift */; };
 		1190B7261A1CAA12005C0BE4 /* RoomDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1190B7251A1CAA12005C0BE4 /* RoomDetailsViewController.swift */; };
 		119791511A1B9FE700F23EE1 /* RoomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119791501A1B9FE700F23EE1 /* RoomsViewController.swift */; };
+		11E3EC5A1A2CB6D8004BC39A /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11E3EC591A2CB6D8004BC39A /* Alamofire.framework */; };
+		11E3EC5B1A2CB6D8004BC39A /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 11E3EC591A2CB6D8004BC39A /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		11E3EC5E1A2CC01C004BC39A /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E3EC5D1A2CC01C004BC39A /* Router.swift */; };
+		11E3EC651A2E0EAF004BC39A /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11E3EC641A2E0EAF004BC39A /* SwiftyJSON.framework */; };
+		11E3EC661A2E0EAF004BC39A /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 11E3EC641A2E0EAF004BC39A /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		11E3EC6E1A2E2D9B004BC39A /* Alamofire-SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E3EC6D1A2E2D9B004BC39A /* Alamofire-SwiftyJSON.swift */; };
 		11EF7CC31A0CCB2600E3CCDD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EF7CC21A0CCB2600E3CCDD /* AppDelegate.swift */; };
 		11EF7CC51A0CCB2600E3CCDD /* ConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EF7CC41A0CCB2600E3CCDD /* ConnectViewController.swift */; };
 		11EF7CC81A0CCB2600E3CCDD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11EF7CC61A0CCB2600E3CCDD /* Main.storyboard */; };
@@ -31,10 +38,31 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		11E3EC5C1A2CB6D8004BC39A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				11E3EC661A2E0EAF004BC39A /* SwiftyJSON.framework in Embed Frameworks */,
+				11E3EC5B1A2CB6D8004BC39A /* Alamofire.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		116E24161A27A1A600F901B5 /* ProblemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProblemCell.swift; sourceTree = "<group>"; };
 		1190B7251A1CAA12005C0BE4 /* RoomDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomDetailsViewController.swift; sourceTree = "<group>"; };
 		1190B7271A1CAB6A005C0BE4 /* ProblemHunt-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ProblemHunt-Bridging-Header.h"; sourceTree = "<group>"; };
 		119791501A1B9FE700F23EE1 /* RoomsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomsViewController.swift; sourceTree = "<group>"; };
+		11E3EC541A2CB059004BC39A /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
+		11E3EC591A2CB6D8004BC39A /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage.build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		11E3EC5D1A2CC01C004BC39A /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		11E3EC641A2E0EAF004BC39A /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage.build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
+		11E3EC6D1A2E2D9B004BC39A /* Alamofire-SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Alamofire-SwiftyJSON.swift"; sourceTree = "<group>"; };
 		11EF7CBD1A0CCB2600E3CCDD /* ProblemHunt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProblemHunt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11EF7CC11A0CCB2600E3CCDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		11EF7CC21A0CCB2600E3CCDD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +87,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B30D0A6AF336DE60EB3F4E94 /* libPods-ProblemHunt.a in Frameworks */,
+				11E3EC5A1A2CB6D8004BC39A /* Alamofire.framework in Frameworks */,
+				11E3EC651A2E0EAF004BC39A /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,14 +125,33 @@
 			isa = PBXGroup;
 			children = (
 				11EF7CE61A0F789100E3CCDD /* ProblemHuntService.swift */,
+				11E3EC5D1A2CC01C004BC39A /* Router.swift */,
 			);
 			name = Services;
+			sourceTree = "<group>";
+		};
+		116E24181A27A1AB00F901B5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				116E24161A27A1A600F901B5 /* ProblemCell.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		11E3EC6C1A2E2D7F004BC39A /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				11E3EC6D1A2E2D9B004BC39A /* Alamofire-SwiftyJSON.swift */,
+			);
+			name = Vendor;
 			sourceTree = "<group>";
 		};
 		11EF7CB41A0CCB2600E3CCDD = {
 			isa = PBXGroup;
 			children = (
+				11E3EC541A2CB059004BC39A /* Cartfile */,
 				11EF7CBF1A0CCB2600E3CCDD /* ProblemHunt */,
+				11E3EC6C1A2E2D7F004BC39A /* Vendor */,
 				11EF7CD51A0CCB2600E3CCDD /* ProblemHuntTests */,
 				11EF7CBE1A0CCB2600E3CCDD /* Products */,
 				2BE0A70F40711B5B0F4F16F4 /* Pods */,
@@ -124,8 +173,9 @@
 			children = (
 				11EF7CC21A0CCB2600E3CCDD /* AppDelegate.swift */,
 				116E24141A262B2E00F901B5 /* Services */,
-				116E24131A262B2500F901B5 /* Controllers */,
 				116E24121A262B1900F901B5 /* Models */,
+				116E24181A27A1AB00F901B5 /* Views */,
+				116E24131A262B2500F901B5 /* Controllers */,
 				11EF7CC61A0CCB2600E3CCDD /* Main.storyboard */,
 				11EF7CC91A0CCB2600E3CCDD /* Images.xcassets */,
 				11EF7CCB1A0CCB2600E3CCDD /* LaunchScreen.xib */,
@@ -172,6 +222,8 @@
 		F51F112509D259DFB9563EE8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				11E3EC641A2E0EAF004BC39A /* SwiftyJSON.framework */,
+				11E3EC591A2CB6D8004BC39A /* Alamofire.framework */,
 				77385393BA58BD15970BFA61 /* libPods-ProblemHunt.a */,
 			);
 			name = Frameworks;
@@ -189,6 +241,7 @@
 				11EF7CBA1A0CCB2600E3CCDD /* Frameworks */,
 				11EF7CBB1A0CCB2600E3CCDD /* Resources */,
 				03EECAA0B43AECDF3C756612 /* Copy Pods Resources */,
+				11E3EC5C1A2CB6D8004BC39A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -314,9 +367,12 @@
 			files = (
 				11FCE1031A2381E400294DC0 /* Problem.swift in Sources */,
 				1190B7261A1CAA12005C0BE4 /* RoomDetailsViewController.swift in Sources */,
+				11E3EC6E1A2E2D9B004BC39A /* Alamofire-SwiftyJSON.swift in Sources */,
 				11EF7CE71A0F789100E3CCDD /* ProblemHuntService.swift in Sources */,
 				11FCE1001A23718600294DC0 /* Room.swift in Sources */,
+				11E3EC5E1A2CC01C004BC39A /* Router.swift in Sources */,
 				11EF7CC51A0CCB2600E3CCDD /* ConnectViewController.swift in Sources */,
+				116E24171A27A1A600F901B5 /* ProblemCell.swift in Sources */,
 				119791511A1B9FE700F23EE1 /* RoomsViewController.swift in Sources */,
 				11EF7CC31A0CCB2600E3CCDD /* AppDelegate.swift in Sources */,
 			);
@@ -444,6 +500,11 @@
 			baseConfigurationReference = 4FEEB66E41507316E1D1B01E /* Pods-ProblemHunt.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Carthage.build/iOS",
+				);
 				INFOPLIST_FILE = ProblemHunt/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -456,6 +517,11 @@
 			baseConfigurationReference = 322ED48D795EE27E182CC57F /* Pods-ProblemHunt.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Carthage.build/iOS",
+				);
 				INFOPLIST_FILE = ProblemHunt/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

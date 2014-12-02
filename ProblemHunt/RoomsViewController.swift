@@ -25,11 +25,8 @@ class RoomsViewController : UIViewController,
     }
 
     func fetchRooms() {
-        ProblemHuntService.sharedInstance.rooms({ (response: NSDictionary) -> Void in
-            let roomsJson = response["rooms"] as [[String : AnyObject]]
-            self.rooms = roomsJson.map { (attribute: [String : AnyObject]) -> Room in
-                return Room(json: attribute)
-            }
+        ProblemHuntService.sharedInstance.rooms({ (rooms: [Room]) -> Void in
+            self.rooms = rooms
             dispatch_async(dispatch_get_main_queue(), {
                 self.tableView.reloadData()
             })
@@ -63,7 +60,7 @@ class RoomsViewController : UIViewController,
             let textField = alertView.textFieldAtIndex(0)
             if (textField != nil) {
                 let roomName = textField!.text
-                ProblemHuntService.sharedInstance.createRoom(roomName, callback: { (response: NSDictionary) -> Void in
+                ProblemHuntService.sharedInstance.createRoom(roomName, callback: {
                     dispatch_async(dispatch_get_main_queue(), {
                         self.fetchRooms()
                     })
@@ -84,6 +81,14 @@ class RoomsViewController : UIViewController,
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("RoomCell", forIndexPath: indexPath) as UITableViewCell
+        
+        let fact = 5.0 * CGFloat(indexPath.row) % 95.0
+        var blue : CGFloat = 0.0
+        var green : CGFloat = 0.0
+        blue = 160.0 + fact
+        green = 115.0 + fact
+        cell.backgroundColor = UIColor(red: 50.0 / 255.0, green: green / 255.0, blue: blue / 255.0, alpha: 1.0)
+        cell.textLabel.textColor = UIColor.whiteColor()
         
         let room = self.rooms[indexPath.row] as Room
         cell.textLabel.text = room.name as String?

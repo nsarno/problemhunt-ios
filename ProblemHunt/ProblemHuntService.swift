@@ -7,14 +7,10 @@
 //
 
 import Foundation
+import Alamofire
+import SwiftyJSON
 
 class ProblemHuntService {
-
-//#if os(iOS)
-//    let baseURL = "https://problemhunt.herokuapp.com"
-//#else
-    let baseURL = "http://0.0.0.0:8080"
-//#endif
 
     class var sharedInstance: ProblemHuntService {
 
@@ -30,7 +26,15 @@ class ProblemHuntService {
         return Static.instance!
     }
     
-    func setToken(token: NSString) {
+    init() {
+        if (UIDevice.currentDevice().model == "iPhone Simulator") {
+            Router.baseURL = "http://0.0.0.0:8080"
+        } else {
+            Router.baseURL = "http://problemhunt.herokuapp.com"
+        }
+    }
+    
+    func setToken(token: String) {
         A0SimpleKeychain().setString(token, forKey:"problemhunt-user-jwt")
     }
     
@@ -38,8 +42,8 @@ class ProblemHuntService {
         A0SimpleKeychain().deleteEntryForKey("problemhunt-user-jwt")
     }
     
-    func token() -> NSString {
-        return A0SimpleKeychain().stringForKey("problemhunt-user-jwt")!
+    func token() -> String? {
+        return A0SimpleKeychain().stringForKey("problemhunt-user-jwt")
     }
     
     func isConnected() -> Bool {
@@ -48,77 +52,52 @@ class ProblemHuntService {
         return str != nil
     }
     
-    func createRoom(name: String, callback: (NSDictionary) -> Void) {
-        self.post("/rooms", params: ["room": ["name": name]], callback: callback)
+    func connect(username:String, password:String, callback: (token: String) -> Void) {
+        let params = ["user": ["email": username, "password": password]]
+        Alamofire.request(Router.Auth(params)).responseSwiftyJSON { (request, response, json, error) in
+            callback(token: json["token"].stringValue)
+        }
     }
 
-    func createProblem(desc: String, roomId: Int, callback: (NSDictionary) -> Void) {
-        self.post("/rooms/\(roomId)/problems", params: ["problem": ["description": desc]], callback: callback)
+    func createRoom(name: String, callback: () -> Void) {
+        let params = ["room": ["name": name]]
+        Alamofire.request(Router.CreateRoom(params)).responseSwiftyJSON { (request, response, json, error) -> Void in
+            callback()
+        }
+    }
+    
+    func rooms(callback: (rooms: [Room]) -> Void) {
+        Alamofire.request(Router.ReadRooms()).responseSwiftyJSON { (request, response, json, error) -> Void in
+            let roomsJson = json["rooms"].arrayValue
+            let rooms = roomsJson.map { (attribute: JSON) -> Room in
+                return Room(json: attribute)
+            }
+            callback(rooms: rooms)
+        }
     }
 
-    func connect(username:String, password:String, callback: (NSDictionary) -> Void) {
-        self.post("/auth", params: ["user": ["email": username, "password": password]], callback: callback)
-    }
-    
-    func rooms(callback: (NSDictionary) -> Void) {
-        self.get("/rooms", params: nil, callback: callback)
-    }
-    
-    func problems(roomId: Int, callback: (NSDictionary) -> Void) {
-        self.get("/rooms/\(roomId)/problems", params: nil, callback: callback)
-    }
-    
-    func get(resource: String, params: Dictionary<String, Dictionary<String, String>>?, callback: (NSDictionary) -> Void) {
-        self.httpRequest("GET", resource: resource, params: params, callback: callback)
-    }
-    
-    func post(resource: String, params: Dictionary<String, Dictionary<String, String>>?, callback: (NSDictionary) -> Void) {
-        self.httpRequest("POST", resource: resource, params: params, callback: callback)
-    }
-    
-    func httpRequest(method: String, resource: String, params: Dictionary<String, Dictionary<String, String>>?, callback: (NSDictionary) -> Void) {
-        var request = NSMutableURLRequest(URL: NSURL(string: "\(self.baseURL)\(resource)")!)
-        var session = NSURLSession.sharedSession()
-        request.HTTPMethod = method
-        
-        var err: NSError?
-        if (params != nil) {
-            request.HTTPBody = NSJSONSerialization.dataWithJSONObject(params!, options: nil, error: &err)
+    func createProblem(desc: String, roomId: Int, callback: () -> Void) {
+        let params = ["problem": ["description": desc]]
+        Alamofire.request(Router.CreateProblem(roomId, params)).responseSwiftyJSON { (request, response, json, error) -> Void in
+            callback()
         }
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        if self.isConnected() {
-            // println("Authorization: Bearer \(self.token!)")
-            request.addValue("Bearer \(self.token())", forHTTPHeaderField: "Authorization")
+    }
+    
+    func problems(roomId: Int, callback: (problems: [Problem]) -> Void) {
+        Alamofire.request(Router.ReadProblems(roomId)).responseSwiftyJSON { (request, response, json, error) -> Void in
+            let problemsJson = json["problems"].arrayValue
+            let problems = problemsJson.map { (attribute: JSON) -> Problem in
+                return Problem(json: attribute)
+            }
+            callback(problems: problems)
         }
-        
-        var task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
-            // println("Response: \(response)")
-            var strData = NSString(data: data, encoding: NSUTF8StringEncoding)
-            // println("Body: \(strData)")
-            var err: NSError?
-            var json = NSJSONSerialization.JSONObjectWithData(data, options: .MutableLeaves, error: &err) as? NSDictionary
-            
-            // Did the JSONObjectWithData constructor return an error? If so, log the error to the console
-            if(err != nil) {
-                println(err!.localizedDescription)
-                let jsonStr = NSString(data: data, encoding: NSUTF8StringEncoding)
-                println("Error could not parse JSON: '\(jsonStr)'")
-            }
-            else {
-                // The JSONObjectWithData constructor didn't return an error. But, we should still
-                // check and make sure that json has a value using optional binding.
-                if let parseJSON = json {
-                    // Okay, the parsedJSON is here, let's get the value for 'success' out of it
-                    callback(parseJSON)
-                }
-                else {
-                    // Woa, okay the json object was nil, something went wrong. Maybe the server isn't running?
-                    let jsonStr = NSString(data: data, encoding: NSUTF8StringEncoding)
-                    println("Error could not parse JSON: \(jsonStr)")
-                }
-            }
-        })
-        task.resume()
+    }
+    
+    func upvoteProblem(problemId: Int, callback: (NSDictionary) -> Void) {
+//        self.post("/problems/\(problemId)/upvotes", params: nil, callback: callback)
+    }
+    
+    func downvoteProblem(upvoteId: Int, callback: (NSDictionary) -> Void) {
+//        self.delete("/upvotes/\(upvoteId)", callback: callback)
     }
 }

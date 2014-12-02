@@ -1,0 +1,5 @@
+# HTTP Networking
+github "Alamofire/Alamofire"
+
+# Build is broken (add shared in the scheme, remove test from build)
+github "SwiftyJSON/SwiftyJSON"
