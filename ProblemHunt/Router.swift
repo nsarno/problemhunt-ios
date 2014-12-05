@@ -12,17 +12,21 @@ import Alamofire
 enum Router: URLRequestConvertible {
     static var baseURL: String?
 
-    // Auth routes
+    // Auth
     case Auth([String: AnyObject])
     
-    // Rooms routes
+    // Rooms
     case CreateRoom([String: AnyObject])
     case ReadRooms()
     case DestroyRoom(Int)
     
-    // Problems routes
+    // Problems
     case CreateProblem(Int, [String: AnyObject])
     case ReadProblems(Int)
+    
+    // Upvotes
+    case CreateUpvote(Int)
+    case DestroyUpvote(Int)
 
     var method: Alamofire.Method {
         switch self {
@@ -43,6 +47,12 @@ enum Router: URLRequestConvertible {
             return .POST
         case .ReadProblems:
             return .GET
+            
+        // Upvotes
+        case .CreateUpvote:
+            return .POST
+        case .DestroyUpvote:
+            return .DELETE
         }
     }
     
@@ -61,10 +71,16 @@ enum Router: URLRequestConvertible {
             return "/rooms/\(id)"
         
         // Problems
-        case .CreateProblem(let roomId):
+        case .CreateProblem(let roomId, _):
             return "/rooms/\(roomId)/problems"
         case .ReadProblems(let roomId):
-            return "/room/\(roomId)/problems"
+            return "/rooms/\(roomId)/problems"
+            
+        // Upvotes
+        case .CreateUpvote(let problemId):
+            return "/problems/\(problemId)/upvotes"
+        case .DestroyUpvote(let upvoteId):
+            return "/upvotes/\(upvoteId)"
         }
     }
 

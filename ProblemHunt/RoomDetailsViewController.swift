@@ -21,10 +21,7 @@ class RoomDetailsViewController :   UIViewController,
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.problems = self.room.problems
-        self.problems.sort({ (first, second) -> Bool in
-            first.upvotesCount >  second.upvotesCount
-        })
+        self.fetchProblems()
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.navigationItem.title = self.room.name
@@ -34,8 +31,12 @@ class RoomDetailsViewController :   UIViewController,
     func fetchProblems() {
         ProblemHuntService.sharedInstance.problems(self.room.id, { (problems: [Problem]) -> Void in
             self.problems = problems
+            self.problems.sort({ (first, second) -> Bool in
+                first.upvotesCount >  second.upvotesCount
+            })
             dispatch_async(dispatch_get_main_queue(), {
                 self.tableView.reloadData()
+                println("reload data... ok")
             })
         })
     }
@@ -44,18 +45,17 @@ class RoomDetailsViewController :   UIViewController,
         let problem = self.problems[sender.tag]
         
         if problem.isUpvoted {
-            sender.backgroundColor = UIColor(red: 149.0 / 255.0, green: 165.0 / 255.0, blue: 166.0 / 255.0, alpha: 1.0)
-            ProblemHuntService.sharedInstance.downvoteProblem(problem.upvoteId, callback: { (response) in
-                println("downvoted")
+            println("downvote...")
+            ProblemHuntService.sharedInstance.downvoteProblem(problem.upvoteId, callback: { (isDownvoted) in
                 self.fetchProblems()
             })
         } else {
-            sender.backgroundColor = UIColor(red: 46.0 / 255.0, green: 204.0 / 255.0, blue: 113.0 / 255.0, alpha: 1.0)
-            ProblemHuntService.sharedInstance.upvoteProblem(problem.id, callback: { (response) in
-                println("upvoted")
+            println("upvote...")
+            ProblemHuntService.sharedInstance.upvoteProblem(problem.id, callback: { (isUpvoted) in
                 self.fetchProblems()
             })
         }
+
     }
 
 
@@ -97,9 +97,14 @@ class RoomDetailsViewController :   UIViewController,
         cell.problemTextView.text = problem.description
         cell.upvoteButton.tag = indexPath.row
         cell.upvoteButton.setTitle("\(problem.upvotesCount)", forState: .Normal)
+
+        // Can't be set in IB because it's CGColor
         if problem.isUpvoted {
-            cell.upvoteButton.backgroundColor = UIColor(red: 46.0 / 255.0, green: 204.0 / 255.0, blue: 113.0 / 255.0, alpha: 1.0)
+            cell.upvoteButton.layer.borderColor = UIColor(red: 46.0/255.0, green: 204.0/255.0, blue: 113.0/255.0, alpha: 1.0).CGColor
+        } else {
+            cell.upvoteButton.layer.borderColor = UIColor.whiteColor().CGColor
         }
+
         return cell
     }
 }

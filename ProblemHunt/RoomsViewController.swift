@@ -82,16 +82,10 @@ class RoomsViewController : UIViewController,
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("RoomCell", forIndexPath: indexPath) as UITableViewCell
         
-        let fact = 5.0 * CGFloat(indexPath.row) % 95.0
-        var blue : CGFloat = 0.0
-        var green : CGFloat = 0.0
-        blue = 160.0 + fact
-        green = 115.0 + fact
-        cell.backgroundColor = UIColor(red: 50.0 / 255.0, green: green / 255.0, blue: blue / 255.0, alpha: 1.0)
-        cell.textLabel.textColor = UIColor.whiteColor()
+        cell.textLabel!.textColor = UIColor.whiteColor()
         
         let room = self.rooms[indexPath.row] as Room
-        cell.textLabel.text = room.name as String?
+        cell.textLabel!.text = room.name as String?
         return cell
     }
 }

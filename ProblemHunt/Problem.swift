@@ -13,9 +13,9 @@ class Problem {
 
     let id : Int
     let description : String
-    let upvotesCount : Int
-    let isUpvoted : Bool
-    let upvoteId : Int
+    var upvotesCount : Int
+    var isUpvoted : Bool
+    var upvoteId : Int
     let isAuthor : Bool
     
     init(json: JSON) {

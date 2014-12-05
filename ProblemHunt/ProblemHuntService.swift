@@ -93,11 +93,15 @@ class ProblemHuntService {
         }
     }
     
-    func upvoteProblem(problemId: Int, callback: (NSDictionary) -> Void) {
-//        self.post("/problems/\(problemId)/upvotes", params: nil, callback: callback)
+    func upvoteProblem(problemId: Int, callback: (Bool) -> Void) {
+        Alamofire.request(Router.CreateUpvote(problemId)).responseSwiftyJSON { (request, response, json, error) -> Void in
+            callback(true)
+        }
     }
     
-    func downvoteProblem(upvoteId: Int, callback: (NSDictionary) -> Void) {
-//        self.delete("/upvotes/\(upvoteId)", callback: callback)
+    func downvoteProblem(upvoteId: Int, callback: (Bool) -> Void) {
+        Alamofire.request(Router.DestroyUpvote(upvoteId)).responseSwiftyJSON { (request, response, json, error) -> Void in
+            callback(true)
+        }
     }
 }
