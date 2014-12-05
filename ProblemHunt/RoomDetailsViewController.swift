@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyJSON
+import AudioToolbox
 
 class RoomDetailsViewController :   UIViewController,
                                     UITableViewDelegate,
@@ -35,7 +36,8 @@ class RoomDetailsViewController :   UIViewController,
                 first.upvotesCount >  second.upvotesCount
             })
             dispatch_async(dispatch_get_main_queue(), {
-                self.tableView.reloadData()
+//                self.tableView.reloadData()
+                self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Automatic)
                 println("reload data... ok")
             })
         })
@@ -43,15 +45,24 @@ class RoomDetailsViewController :   UIViewController,
     
     @IBAction func upvote(sender: UIButton) {
         let problem = self.problems[sender.tag]
-        
+
+        let wetAsphalt = UIColor(red: 52.0/255.0, green: 73.0/255.0, blue: 94.0/255.0, alpha: 1.0)
+        let emerald = UIColor(red: 46.0/255.0, green: 204.0/255.0, blue: 113.0/255.0, alpha: 1.0)
+
         if problem.isUpvoted {
             println("downvote...")
+            sender.backgroundColor = wetAsphalt
+            sender.layer.borderColor = wetAsphalt.CGColor
             ProblemHuntService.sharedInstance.downvoteProblem(problem.upvoteId, callback: { (isDownvoted) in
+                sender.backgroundColor = UIColor.clearColor()
                 self.fetchProblems()
             })
         } else {
             println("upvote...")
+            sender.backgroundColor = emerald
+            sender.layer.borderColor = emerald.CGColor
             ProblemHuntService.sharedInstance.upvoteProblem(problem.id, callback: { (isUpvoted) in
+                sender.backgroundColor = UIColor.clearColor()
                 self.fetchProblems()
             })
         }
@@ -94,15 +105,25 @@ class RoomDetailsViewController :   UIViewController,
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ProblemCell", forIndexPath: indexPath) as ProblemCell
         let problem = self.problems[indexPath.row] as Problem
+
+        let wetAsphalt = UIColor(red: 52.0/255.0, green: 73.0/255.0, blue: 94.0/255.0, alpha: 1.0).CGColor
+        let emerald = UIColor(red: 46.0/255.0, green: 204.0/255.0, blue: 113.0/255.0, alpha: 1.0).CGColor
+        
         cell.problemTextView.text = problem.description
+        
+        let leftBorder = CALayer()
+        leftBorder.backgroundColor = wetAsphalt
+        leftBorder.frame = CGRectMake(0, 0, 1.0, cell.problemTextView.frame.height)
+        cell.problemTextView.layer.addSublayer(leftBorder)
+
         cell.upvoteButton.tag = indexPath.row
         cell.upvoteButton.setTitle("\(problem.upvotesCount)", forState: .Normal)
 
         // Can't be set in IB because it's CGColor
         if problem.isUpvoted {
-            cell.upvoteButton.layer.borderColor = UIColor(red: 46.0/255.0, green: 204.0/255.0, blue: 113.0/255.0, alpha: 1.0).CGColor
+            cell.upvoteButton.layer.borderColor = emerald
         } else {
-            cell.upvoteButton.layer.borderColor = UIColor.whiteColor().CGColor
+            cell.upvoteButton.layer.borderColor = wetAsphalt
         }
 
         return cell
