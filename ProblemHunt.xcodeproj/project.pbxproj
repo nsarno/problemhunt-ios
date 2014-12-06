@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		116E24171A27A1A600F901B5 /* ProblemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116E24161A27A1A600F901B5 /* ProblemCell.swift */; };
 		1190B7261A1CAA12005C0BE4 /* RoomDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1190B7251A1CAA12005C0BE4 /* RoomDetailsViewController.swift */; };
+		1195A70B1A33600500CDC551 /* RoomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1195A70A1A33600500CDC551 /* RoomCell.swift */; };
 		119791511A1B9FE700F23EE1 /* RoomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119791501A1B9FE700F23EE1 /* RoomsViewController.swift */; };
 		11E3EC5A1A2CB6D8004BC39A /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11E3EC591A2CB6D8004BC39A /* Alamofire.framework */; };
 		11E3EC5B1A2CB6D8004BC39A /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 11E3EC591A2CB6D8004BC39A /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -57,6 +58,7 @@
 		116E24161A27A1A600F901B5 /* ProblemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProblemCell.swift; sourceTree = "<group>"; };
 		1190B7251A1CAA12005C0BE4 /* RoomDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomDetailsViewController.swift; sourceTree = "<group>"; };
 		1190B7271A1CAB6A005C0BE4 /* ProblemHunt-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ProblemHunt-Bridging-Header.h"; sourceTree = "<group>"; };
+		1195A70A1A33600500CDC551 /* RoomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomCell.swift; sourceTree = "<group>"; };
 		119791501A1B9FE700F23EE1 /* RoomsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomsViewController.swift; sourceTree = "<group>"; };
 		11E3EC541A2CB059004BC39A /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		11E3EC591A2CB6D8004BC39A /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage.build/iOS/Alamofire.framework; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				116E24161A27A1A600F901B5 /* ProblemCell.swift */,
+				1195A70A1A33600500CDC551 /* RoomCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 				11EF7CE71A0F789100E3CCDD /* ProblemHuntService.swift in Sources */,
 				11FCE1001A23718600294DC0 /* Room.swift in Sources */,
 				11E3EC5E1A2CC01C004BC39A /* Router.swift in Sources */,
+				1195A70B1A33600500CDC551 /* RoomCell.swift in Sources */,
 				11EF7CC51A0CCB2600E3CCDD /* ConnectViewController.swift in Sources */,
 				116E24171A27A1A600F901B5 /* ProblemCell.swift in Sources */,
 				119791511A1B9FE700F23EE1 /* RoomsViewController.swift in Sources */,

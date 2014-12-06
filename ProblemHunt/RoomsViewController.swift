@@ -80,12 +80,29 @@ class RoomsViewController : UIViewController,
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("RoomCell", forIndexPath: indexPath) as UITableViewCell
-        
-        cell.textLabel!.textColor = UIColor.whiteColor()
-        
+        let cell = tableView.dequeueReusableCellWithIdentifier("RoomCell", forIndexPath: indexPath) as RoomCell
+
         let room = self.rooms[indexPath.row]
-        cell.textLabel!.text = room.name as String?
+        cell.roomName.text = room.name as String?
+        
+        cell.joinButton.setTitle("\(room.followersCount)", forState: .Normal)
+        cell.joinButton.tag = indexPath.row
+        
+        let wetAsphalt = UIColor(red: 52.0/255.0, green: 73.0/255.0, blue: 94.0/255.0, alpha: 1.0).CGColor
+        let emerald = UIColor(red: 46.0/255.0, green: 204.0/255.0, blue: 113.0/255.0, alpha: 1.0).CGColor
+
+        let leftBorder = CALayer()
+        leftBorder.backgroundColor = wetAsphalt
+        leftBorder.frame = CGRectMake(0, 0, 1.0, cell.labelContainer.frame.height)
+        cell.labelContainer.layer.addSublayer(leftBorder)
+        
+        // Can't be set in IB because it's CGColor
+        if room.isRegistered {
+            cell.joinButton.layer.borderColor = emerald
+        } else {
+            cell.joinButton.layer.borderColor = wetAsphalt
+        }
+
         return cell
     }
     
