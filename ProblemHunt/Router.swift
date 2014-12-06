@@ -23,6 +23,7 @@ enum Router: URLRequestConvertible {
     // Problems
     case CreateProblem(Int, [String: AnyObject])
     case ReadProblems(Int)
+    case DestroyProblem(Int)
     
     // Upvotes
     case CreateUpvote(Int)
@@ -47,6 +48,8 @@ enum Router: URLRequestConvertible {
             return .POST
         case .ReadProblems:
             return .GET
+        case .DestroyProblem:
+            return .DELETE
             
         // Upvotes
         case .CreateUpvote:
@@ -75,6 +78,8 @@ enum Router: URLRequestConvertible {
             return "/rooms/\(roomId)/problems"
         case .ReadProblems(let roomId):
             return "/rooms/\(roomId)/problems"
+        case .DestroyProblem(let problemId):
+            return "/problems/\(problemId)"
             
         // Upvotes
         case .CreateUpvote(let problemId):

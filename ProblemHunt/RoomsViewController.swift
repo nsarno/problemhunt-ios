@@ -28,7 +28,7 @@ class RoomsViewController : UIViewController,
         ProblemHuntService.sharedInstance.rooms({ (rooms: [Room]) -> Void in
             self.rooms = rooms
             dispatch_async(dispatch_get_main_queue(), {
-                self.tableView.reloadData()
+                self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Automatic)
             })
         })
     }
@@ -84,8 +84,24 @@ class RoomsViewController : UIViewController,
         
         cell.textLabel!.textColor = UIColor.whiteColor()
         
-        let room = self.rooms[indexPath.row] as Room
+        let room = self.rooms[indexPath.row]
         cell.textLabel!.text = room.name as String?
         return cell
+    }
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        let room = self.rooms[indexPath.row]
+        return room.isOwner
+    }
+    
+    func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+        return .Delete
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        let room = self.rooms[indexPath.row]
+        ProblemHuntService.sharedInstance.deleteRoom(room.id, callback: {
+            self.fetchRooms()
+        })
     }
 }

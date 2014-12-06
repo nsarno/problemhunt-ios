@@ -66,6 +66,12 @@ class ProblemHuntService {
         }
     }
     
+    func deleteRoom(roomId: Int, callback: () -> Void) {
+        Alamofire.request(Router.DestroyRoom(roomId)).responseSwiftyJSON { (request, response, json, error) -> Void in
+            callback()
+        }
+    }
+    
     func rooms(callback: (rooms: [Room]) -> Void) {
         Alamofire.request(Router.ReadRooms()).responseSwiftyJSON { (request, response, json, error) -> Void in
             let roomsJson = json["rooms"].arrayValue
@@ -83,6 +89,12 @@ class ProblemHuntService {
         }
     }
     
+    func deleteProblem(problemId: Int, callback: () -> Void) {
+        Alamofire.request(Router.DestroyProblem(problemId)).responseSwiftyJSON { (request, response, json, error) -> Void in
+            callback()
+        }
+    }
+
     func problems(roomId: Int, callback: (problems: [Problem]) -> Void) {
         Alamofire.request(Router.ReadProblems(roomId)).responseSwiftyJSON { (request, response, json, error) -> Void in
             let problemsJson = json["problems"].arrayValue

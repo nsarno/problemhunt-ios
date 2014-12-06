@@ -36,7 +36,6 @@ class RoomDetailsViewController :   UIViewController,
                 first.upvotesCount >  second.upvotesCount
             })
             dispatch_async(dispatch_get_main_queue(), {
-//                self.tableView.reloadData()
                 self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Automatic)
                 println("reload data... ok")
             })
@@ -127,5 +126,16 @@ class RoomDetailsViewController :   UIViewController,
         }
 
         return cell
+    }
+    
+    func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+        return .Delete
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        let problem = self.problems[indexPath.row]
+        ProblemHuntService.sharedInstance.deleteProblem(problem.id, callback: {
+            self.fetchProblems()
+        })
     }
 }
