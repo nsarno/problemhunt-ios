@@ -12,7 +12,8 @@ class ConnectViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet var usernameField: UITextField!
     @IBOutlet var passwordField: UITextField!
-    
+    @IBOutlet var connectButton: UIButton!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,6 +31,8 @@ class ConnectViewController: UIViewController, UITextFieldDelegate {
             self.usernameField.text = "arnaud.mesureur@gmail.com"
             self.passwordField.text = "secret"
         }
+        
+        self.connectButton.layer.borderColor = UIColor.whiteColor().CGColor
     }
 
     override func didReceiveMemoryWarning() {
