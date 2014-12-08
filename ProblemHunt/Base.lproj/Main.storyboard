@@ -124,10 +124,10 @@
                                                         <action selector="toggleFollowRoom:" destination="s96-th-GPJ" eventType="touchUpInside" id="W0m-XY-Xw5"/>
                                                     </connections>
                                                 </button>
-                                                <view userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xFT-eq-Fep">
+                                                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xFT-eq-Fep">
                                                     <rect key="frame" x="60" y="8" width="532" height="59"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wk5-Mm-SG4">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wk5-Mm-SG4">
                                                             <rect key="frame" x="8" y="19" width="516" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -135,12 +135,22 @@
                                                         </label>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstItem="wk5-Mm-SG4" firstAttribute="centerY" secondItem="xFT-eq-Fep" secondAttribute="centerY" id="HE0-7K-qRq"/>
+                                                        <constraint firstItem="wk5-Mm-SG4" firstAttribute="top" secondItem="xFT-eq-Fep" secondAttribute="top" constant="19" id="TIr-AF-weL"/>
+                                                        <constraint firstItem="wk5-Mm-SG4" firstAttribute="trailing" secondItem="xFT-eq-Fep" secondAttribute="trailingMargin" id="V2a-dZ-tAf"/>
+                                                        <constraint firstItem="wk5-Mm-SG4" firstAttribute="leading" secondItem="xFT-eq-Fep" secondAttribute="leadingMargin" id="uHJ-Z2-FpM"/>
+                                                    </constraints>
                                                 </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottomMargin" secondItem="igL-hW-IUv" secondAttribute="bottom" constant="6.5" id="8G8-Ue-YC1"/>
                                                 <constraint firstItem="igL-hW-IUv" firstAttribute="leading" secondItem="1HR-pi-Epb" secondAttribute="leadingMargin" id="9kv-pW-C6v"/>
+                                                <constraint firstItem="xFT-eq-Fep" firstAttribute="leading" secondItem="igL-hW-IUv" secondAttribute="trailing" constant="8" symbolic="YES" id="WYy-fh-GZI"/>
                                                 <constraint firstItem="igL-hW-IUv" firstAttribute="top" secondItem="1HR-pi-Epb" secondAttribute="topMargin" constant="8" id="caO-Fk-E1L"/>
+                                                <constraint firstItem="xFT-eq-Fep" firstAttribute="top" secondItem="1HR-pi-Epb" secondAttribute="topMargin" id="hc7-z0-Vch"/>
+                                                <constraint firstItem="xFT-eq-Fep" firstAttribute="trailing" secondItem="1HR-pi-Epb" secondAttribute="trailingMargin" id="nd3-D6-6uP"/>
+                                                <constraint firstItem="xFT-eq-Fep" firstAttribute="bottom" secondItem="1HR-pi-Epb" secondAttribute="bottomMargin" id="wcI-KD-Iao"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
