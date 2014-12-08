@@ -34,12 +34,21 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PROBLEMHUNT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hf5-DM-FJx">
+                                <rect key="frame" x="16" y="174" width="568" height="65"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="65" id="b2h-9d-xXr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                <color key="textColor" red="0.7173687742" green="1" blue="0.54299420050000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" alpha="0.69999999999999973" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1TB-8f-AHo">
-                                <rect key="frame" x="278" y="323" width="44" height="44"/>
+                                <rect key="frame" x="270" y="340" width="60" height="60"/>
                                 <color key="backgroundColor" red="0.20072704553604126" green="0.28476935625076294" blue="0.37210115790367126" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="7NT-qZ-5z5"/>
-                                    <constraint firstAttribute="width" constant="44" id="HXb-CN-Pds"/>
+                                    <constraint firstAttribute="height" constant="60" id="On7-ir-Jec"/>
+                                    <constraint firstAttribute="width" constant="60" id="SYo-tK-x5j"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="DiwanMishafi" family="Mishafi" pointSize="35"/>
                                 <inset key="contentEdgeInsets" minX="1" minY="5" maxX="0.0" maxY="0.0"/>
@@ -49,7 +58,7 @@
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="22"/>
+                                        <integer key="value" value="30"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
                                         <integer key="value" value="1"/>
@@ -63,12 +72,15 @@
                         <color key="backgroundColor" red="0.16982647776603699" green="0.24185281991958618" blue="0.3167126476764679" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="4bl-ch-3bL" firstAttribute="trailing" secondItem="uB2-8i-mak" secondAttribute="trailing" id="2Ae-o0-Jqq"/>
-                            <constraint firstItem="1TB-8f-AHo" firstAttribute="top" secondItem="4bl-ch-3bL" secondAttribute="bottom" constant="8" symbolic="YES" id="4q2-h1-3As"/>
-                            <constraint firstItem="1TB-8f-AHo" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="GNI-hy-l5l"/>
+                            <constraint firstItem="1TB-8f-AHo" firstAttribute="top" secondItem="4bl-ch-3bL" secondAttribute="bottom" constant="25" id="D7P-Mr-taD"/>
                             <constraint firstItem="uB2-8i-mak" firstAttribute="leading" secondItem="4bl-ch-3bL" secondAttribute="leading" id="JGF-f6-Tab"/>
                             <constraint firstItem="4bl-ch-3bL" firstAttribute="top" secondItem="uB2-8i-mak" secondAttribute="bottom" constant="8" symbolic="YES" id="Od6-2K-MjV"/>
-                            <constraint firstItem="1TB-8f-AHo" firstAttribute="centerX" secondItem="4bl-ch-3bL" secondAttribute="centerX" id="j0R-1o-51M"/>
+                            <constraint firstItem="hf5-DM-FJx" firstAttribute="centerX" secondItem="uB2-8i-mak" secondAttribute="centerX" id="Zj1-kP-t7r"/>
+                            <constraint firstItem="1TB-8f-AHo" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bbI-g7-aRP"/>
+                            <constraint firstItem="uB2-8i-mak" firstAttribute="top" secondItem="hf5-DM-FJx" secondAttribute="bottom" constant="8" symbolic="YES" id="gOU-cD-yf5"/>
                             <constraint firstItem="4bl-ch-3bL" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="nwq-ss-mSv"/>
+                            <constraint firstItem="1TB-8f-AHo" firstAttribute="centerX" secondItem="4bl-ch-3bL" secondAttribute="centerX" id="xPq-Qy-uOv"/>
+                            <constraint firstItem="hf5-DM-FJx" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="yk5-RN-FLH"/>
                         </constraints>
                     </view>
                     <connections>
@@ -79,7 +91,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="532" y="337"/>
+            <point key="canvasLocation" x="534" y="337"/>
         </scene>
         <!--Rooms-->
         <scene sceneID="v1x-ue-vMg">
