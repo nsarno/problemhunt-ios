@@ -20,6 +20,10 @@ enum Router: URLRequestConvertible {
     case ReadRooms()
     case DestroyRoom(Int)
     
+    // Registration
+    case CreateRegistration(Int)
+    case DestroyRegistration(Int)
+    
     // Problems
     case CreateProblem(Int, [String: AnyObject])
     case ReadProblems(Int)
@@ -41,6 +45,12 @@ enum Router: URLRequestConvertible {
         case .ReadRooms:
             return .GET
         case .DestroyRoom:
+            return .DELETE
+            
+        // Registration
+        case .CreateRegistration:
+            return .POST
+        case .DestroyRegistration:
             return .DELETE
         
         // Problems
@@ -72,6 +82,12 @@ enum Router: URLRequestConvertible {
             return "/rooms"
         case .DestroyRoom(let id):
             return "/rooms/\(id)"
+            
+        // Registration
+        case .CreateRegistration(let roomId):
+            return "/rooms/\(roomId)/registrations"
+        case .DestroyRegistration(let registrationId):
+            return "/registrations/\(registrationId)"
         
         // Problems
         case .CreateProblem(let roomId, _):

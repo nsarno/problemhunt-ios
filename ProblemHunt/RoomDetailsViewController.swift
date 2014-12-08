@@ -52,7 +52,7 @@ class RoomDetailsViewController :   UIViewController,
             println("downvote...")
             sender.backgroundColor = wetAsphalt
             sender.layer.borderColor = wetAsphalt.CGColor
-            ProblemHuntService.sharedInstance.downvoteProblem(problem.upvoteId, callback: { (isDownvoted) in
+            ProblemHuntService.sharedInstance.downvoteProblem(problem.upvoteId, callback: { () in
                 sender.backgroundColor = UIColor.clearColor()
                 self.fetchProblems()
             })
@@ -60,7 +60,7 @@ class RoomDetailsViewController :   UIViewController,
             println("upvote...")
             sender.backgroundColor = emerald
             sender.layer.borderColor = emerald.CGColor
-            ProblemHuntService.sharedInstance.upvoteProblem(problem.id, callback: { (isUpvoted) in
+            ProblemHuntService.sharedInstance.upvoteProblem(problem.id, callback: { () in
                 sender.backgroundColor = UIColor.clearColor()
                 self.fetchProblems()
             })

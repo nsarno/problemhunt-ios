@@ -81,6 +81,18 @@ class ProblemHuntService {
             callback(rooms: rooms)
         }
     }
+    
+    func followRoom(roomId: Int, callback: () -> Void) {
+        Alamofire.request(Router.CreateRegistration(roomId)).responseSwiftyJSON { (request, response, json, error) -> Void in
+            callback()
+        }
+    }
+    
+    func unfollowRoom(registrationId: Int, callback: () -> Void) {
+        Alamofire.request(Router.DestroyRegistration(registrationId)).responseSwiftyJSON { (request, response, json, error) -> Void in
+            callback()
+        }
+    }
 
     func createProblem(desc: String, roomId: Int, callback: () -> Void) {
         let params = ["problem": ["description": desc]]
@@ -105,15 +117,15 @@ class ProblemHuntService {
         }
     }
     
-    func upvoteProblem(problemId: Int, callback: (Bool) -> Void) {
+    func upvoteProblem(problemId: Int, callback: () -> Void) {
         Alamofire.request(Router.CreateUpvote(problemId)).responseSwiftyJSON { (request, response, json, error) -> Void in
-            callback(true)
+            callback()
         }
     }
     
-    func downvoteProblem(upvoteId: Int, callback: (Bool) -> Void) {
+    func downvoteProblem(upvoteId: Int, callback: () -> Void) {
         Alamofire.request(Router.DestroyUpvote(upvoteId)).responseSwiftyJSON { (request, response, json, error) -> Void in
-            callback(true)
+            callback()
         }
     }
 }

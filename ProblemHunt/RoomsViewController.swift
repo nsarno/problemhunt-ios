@@ -27,6 +27,9 @@ class RoomsViewController : UIViewController,
     func fetchRooms() {
         ProblemHuntService.sharedInstance.rooms({ (rooms: [Room]) -> Void in
             self.rooms = rooms
+            self.rooms.sort({ (first, second) -> Bool in
+                first.followersCount >  second.followersCount
+            })
             dispatch_async(dispatch_get_main_queue(), {
                 self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Automatic)
             })
