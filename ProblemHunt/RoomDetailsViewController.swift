@@ -17,8 +17,15 @@ class RoomDetailsViewController :   UIViewController,
 
     @IBOutlet weak var tableView: UITableView!
 
+    let activityIndicator : UIActivityIndicatorView
+    
     var room = Room()
     var problems : [Problem] = []
+    
+    required init(coder aDecoder: NSCoder) {
+        self.activityIndicator = UIActivityIndicatorView()
+        super.init(coder: aDecoder)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,11 +37,25 @@ class RoomDetailsViewController :   UIViewController,
     }
     
     func fetchProblems() {
+
+        // Start activity indicator
+        self.activityIndicator.center = CGPointMake(
+            self.view.center.x,
+            self.view.center.y - self.navigationController!.navigationBar.bounds.height
+        )
+        self.activityIndicator.startAnimating()
+        self.view.addSubview(self.activityIndicator)
+
         ProblemHuntService.sharedInstance.problems(self.room.id, { (problems: [Problem]) -> Void in
             self.problems = problems
             self.problems.sort({ (first, second) -> Bool in
                 first.upvotesCount >  second.upvotesCount
             })
+            
+            // Stop activity indicator
+            self.activityIndicator.removeFromSuperview()
+            self.activityIndicator.stopAnimating()
+
             dispatch_async(dispatch_get_main_queue(), {
                 self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Automatic)
             })

@@ -14,6 +14,13 @@ class ConnectViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var passwordField: UITextField!
     @IBOutlet var connectButton: UIButton!
 
+    let activityIndicator : UIActivityIndicatorView
+
+    required init(coder aDecoder: NSCoder) {
+        self.activityIndicator = UIActivityIndicatorView()
+        super.init(coder: aDecoder)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,7 +50,20 @@ class ConnectViewController: UIViewController, UITextFieldDelegate {
     @IBAction func connect() {
         let username = self.usernameField.text
         let password = self.passwordField.text
+    
+        // Start activity indicator
+        self.activityIndicator.center = self.connectButton.center
+        self.activityIndicator.startAnimating()
+        self.connectButton.hidden = true
+        self.view.addSubview(self.activityIndicator)
+        
         ProblemHuntService.sharedInstance.connect(username, password: password, callback: { (token: String) -> Void in
+
+            // Stop activity indicator
+            self.activityIndicator.removeFromSuperview()
+            self.activityIndicator.stopAnimating()
+
+            self.connectButton.hidden = false
             ProblemHuntService.sharedInstance.setToken(token)
             self.redirect(true)
         })

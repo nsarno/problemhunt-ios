@@ -14,8 +14,15 @@ class RoomsViewController : UIViewController,
                             UIAlertViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+
+    let activityIndicator : UIActivityIndicatorView
     
     var rooms : [Room] = []
+    
+    required init(coder aDecoder: NSCoder) {
+        self.activityIndicator = UIActivityIndicatorView()
+        super.init(coder: aDecoder)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,11 +32,25 @@ class RoomsViewController : UIViewController,
     }
 
     func fetchRooms() {
+
+        // Start activity indicator
+        self.activityIndicator.center = CGPointMake(
+            self.view.center.x,
+            self.view.center.y - self.navigationController!.navigationBar.bounds.height
+        )
+        self.activityIndicator.startAnimating()
+        self.view.addSubview(self.activityIndicator)
+        
         ProblemHuntService.sharedInstance.rooms({ (rooms: [Room]) -> Void in
             self.rooms = rooms
             self.rooms.sort({ (first, second) -> Bool in
                 first.followersCount >  second.followersCount
             })
+            
+            // Stop activity indicator
+            self.activityIndicator.removeFromSuperview()
+            self.activityIndicator.stopAnimating()
+
             dispatch_async(dispatch_get_main_queue(), {
                 self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Automatic)
             })
