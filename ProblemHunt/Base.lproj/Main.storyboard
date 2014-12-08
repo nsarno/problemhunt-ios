@@ -120,6 +120,9 @@
                                                             <integer key="value" value="1"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="toggleFollowRoom:" destination="s96-th-GPJ" eventType="touchUpInside" id="W0m-XY-Xw5"/>
+                                                    </connections>
                                                 </button>
                                                 <view userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xFT-eq-Fep">
                                                     <rect key="frame" x="60" y="8" width="532" height="59"/>
@@ -234,7 +237,7 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                     <connections>
-                                                        <action selector="upvote:" destination="JBW-GL-wtW" eventType="touchUpInside" id="www-BR-DrT"/>
+                                                        <action selector="toggleUpvote:" destination="JBW-GL-wtW" eventType="touchUpInside" id="Hyc-lw-bhY"/>
                                                     </connections>
                                                 </button>
                                             </subviews>

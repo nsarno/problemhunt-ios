@@ -45,6 +45,29 @@ class RoomsViewController : UIViewController,
         }
     }
 
+    @IBAction func toggleFollowRoom(sender: UIButton) {
+        let room = self.rooms[sender.tag]
+        let wetAsphalt = UIColor(red: 52.0/255.0, green: 73.0/255.0, blue: 94.0/255.0, alpha: 1.0)
+        let emerald = UIColor(red: 46.0/255.0, green: 204.0/255.0, blue: 113.0/255.0, alpha: 1.0)
+        
+        if (room.isRegistered) {
+            sender.backgroundColor = wetAsphalt
+            sender.layer.borderColor = wetAsphalt.CGColor
+            ProblemHuntService.sharedInstance.unfollowRoom(room.registrationId, callback: { () in
+                sender.backgroundColor = UIColor.clearColor()
+                self.fetchRooms()
+            })
+
+        } else {
+            sender.backgroundColor = emerald
+            sender.layer.borderColor = emerald.CGColor
+            ProblemHuntService.sharedInstance.followRoom(room.id, callback: { () in
+                sender.backgroundColor = UIColor.clearColor()
+                self.fetchRooms()
+            })
+        }
+    }
+
     @IBAction func logout(sender: AnyObject) {
         ProblemHuntService.sharedInstance.logout()
         self.dismissViewControllerAnimated(true, completion: nil)

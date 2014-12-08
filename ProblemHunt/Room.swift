@@ -16,6 +16,7 @@ class Room {
     let problems : [Problem]
     let followersCount : Int
     let isRegistered : Bool
+    let registrationId : Int
     let isOwner : Bool
     
     init() {
@@ -24,6 +25,7 @@ class Room {
         self.problems = []
         self.followersCount = 0
         self.isRegistered = false
+        self.registrationId = 0
         self.isOwner = false
     }
     
@@ -36,6 +38,7 @@ class Room {
         }
         self.followersCount = json["followers_count"].intValue
         self.isRegistered = json["registered"].boolValue
+        self.registrationId = json["registration_id"].intValue
         self.isOwner = json["owner"].boolValue
     }
 }
