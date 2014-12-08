@@ -52,10 +52,14 @@ class ProblemHuntService {
         return str != nil
     }
     
-    func connect(username:String, password:String, callback: (token: String) -> Void) {
+    func connect(username:String, password:String, success: (token: String) -> Void, failure: () -> Void) {
         let params = ["user": ["email": username, "password": password]]
         Alamofire.request(Router.Auth(params)).responseSwiftyJSON { (request, response, json, error) in
-            callback(token: json["token"].stringValue)
+            if error == nil {
+                success(token: json["token"].stringValue)
+            } else {
+                failure()
+            }
         }
     }
 

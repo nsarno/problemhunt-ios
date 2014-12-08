@@ -14,10 +14,10 @@ class ConnectViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var passwordField: UITextField!
     @IBOutlet var connectButton: UIButton!
 
-    let activityIndicator : UIActivityIndicatorView
+    let activityIndicator : DefaultActivityIndicatorView
 
     required init(coder aDecoder: NSCoder) {
-        self.activityIndicator = UIActivityIndicatorView()
+        self.activityIndicator = DefaultActivityIndicatorView()
         super.init(coder: aDecoder)
     }
     
@@ -50,22 +50,30 @@ class ConnectViewController: UIViewController, UITextFieldDelegate {
     @IBAction func connect() {
         let username = self.usernameField.text
         let password = self.passwordField.text
-    
-        // Start activity indicator
-        self.activityIndicator.center = self.connectButton.center
-        self.activityIndicator.startAnimating()
-        self.connectButton.hidden = true
-        self.view.addSubview(self.activityIndicator)
         
-        ProblemHuntService.sharedInstance.connect(username, password: password, callback: { (token: String) -> Void in
+        self.activityIndicator.startForButton(self.connectButton, view: self.view)
 
-            // Stop activity indicator
-            self.activityIndicator.removeFromSuperview()
-            self.activityIndicator.stopAnimating()
-
-            self.connectButton.hidden = false
-            ProblemHuntService.sharedInstance.setToken(token)
-            self.redirect(true)
+        ProblemHuntService.sharedInstance.connect(username, password: password,
+            success: { (token: String) -> Void in
+                self.activityIndicator.stop()
+                ProblemHuntService.sharedInstance.setToken(token)
+                self.redirect(true)
+            }, failure: {
+                self.errorFlash()
+            }
+        )
+    }
+    
+    func errorFlash() {
+        let redColor = UIColor(red: 231.0/255.0, green: 76.0/255.0, blue: 60.0/255.0, alpha: 1.0)
+        let wetAsphalt = UIColor(red: 52.0/255.0, green: 73.0/255.0, blue: 94.0/255.0, alpha: 1.0)
+        
+        self.activityIndicator.stop()
+        UIView.animateWithDuration(0.5, delay: 0, options: .CurveEaseOut, animations: {
+            self.view.backgroundColor = redColor
+            self.view.backgroundColor = wetAsphalt
+            }, completion: { (finished) -> Void in
+                
         })
     }
     
