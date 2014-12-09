@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Pods-ProblemHunt-NewRelicAgent.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-ProblemHunt-SimpleKeychain.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -17,12 +22,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>3FCE78B808825113F339C260</key>
+		<key>7C7A6F2092BD023A64E72CD0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CBFB433FDD6B283C5BD74F0A</key>
+		<key>D91824780844A9E9DD87B60C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EDFD2230910694E24E5F0E05</key>
 		<dict>
 			<key>primary</key>
 			<true/>

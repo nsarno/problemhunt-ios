@@ -1,10 +1,13 @@
 PODS:
+  - NewRelicAgent (4.139)
   - SimpleKeychain (0.2.0)
 
 DEPENDENCIES:
+  - NewRelicAgent
   - SimpleKeychain (~> 0.1)
 
 SPEC CHECKSUMS:
+  NewRelicAgent: fe89ea76bcbbe3d45c3adea698f9d786ea6e21ae
   SimpleKeychain: f7c55140169037f7540c949b25da53096036b231
 
 COCOAPODS: 0.35.0

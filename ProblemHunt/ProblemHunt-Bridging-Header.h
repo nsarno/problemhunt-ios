@@ -14,4 +14,6 @@
 #import <SimpleKeychain/A0SimpleKeychain.h>
 #import <SimpleKeychain/A0SimpleKeychain+KeyPair.h>
 
+#import <NewRelicAgent/NewRelic.h>
+
 #endif

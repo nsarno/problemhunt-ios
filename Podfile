@@ -7,6 +7,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 target 'ProblemHunt' do
   pod 'SimpleKeychain', '~> 0.1'
+  pod 'NewRelicAgent'
 end
 
 target 'ProblemHuntTests' do
