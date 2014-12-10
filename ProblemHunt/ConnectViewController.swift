@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import TwitterKit
 
 class ConnectViewController: UIViewController, UITextFieldDelegate {
 
-    @IBOutlet var usernameField: UITextField!
-    @IBOutlet var passwordField: UITextField!
-    @IBOutlet var connectButton: UIButton!
+    @IBOutlet weak var usernameField: UITextField!
+    @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var connectButton: UIButton!
 
     let activityIndicator : DefaultActivityIndicatorView
 
@@ -38,7 +39,7 @@ class ConnectViewController: UIViewController, UITextFieldDelegate {
             self.usernameField.text = "arnaud.mesureur@gmail.com"
             self.passwordField.text = "secret"
         }
-        
+
         self.connectButton.layer.borderColor = UIColor.whiteColor().CGColor
     }
 
