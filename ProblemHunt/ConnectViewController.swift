@@ -8,6 +8,7 @@
 
 import UIKit
 import TwitterKit
+import Crashlytics
 
 class ConnectViewController: UIViewController, UITextFieldDelegate {
 
@@ -40,7 +41,7 @@ class ConnectViewController: UIViewController, UITextFieldDelegate {
             self.passwordField.text = "secret"
         }
 
-        self.connectButton.layer.borderColor = UIColor.whiteColor().CGColor
+        self.connectButton.layer.borderColor = UIColor(red: 1.0/255.0, green: 122.0/255.0, blue: 255.0/255.0, alpha: 1.0).CGColor
     }
 
     override func didReceiveMemoryWarning() {

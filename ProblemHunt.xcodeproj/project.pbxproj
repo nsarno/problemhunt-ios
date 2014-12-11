@@ -17,6 +17,7 @@
 		11CFD6761A38A863007A64B4 /* TwitterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11CFD6731A38A863007A64B4 /* TwitterKit.framework */; };
 		11CFD6771A38A863007A64B4 /* TwitterKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 11CFD6741A38A863007A64B4 /* TwitterKitResources.bundle */; };
 		11CFD6781A38A863007A64B4 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11CFD6751A38A863007A64B4 /* Fabric.framework */; };
+		11CFD67B1A3907B1007A64B4 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11CFD67A1A3907B1007A64B4 /* Crashlytics.framework */; };
 		11E3EC5E1A2CC01C004BC39A /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E3EC5D1A2CC01C004BC39A /* Router.swift */; };
 		11E3EC6E1A2E2D9B004BC39A /* Alamofire-SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E3EC6D1A2E2D9B004BC39A /* Alamofire-SwiftyJSON.swift */; };
 		11EF7CC31A0CCB2600E3CCDD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EF7CC21A0CCB2600E3CCDD /* AppDelegate.swift */; };
@@ -66,6 +67,7 @@
 		11CFD6731A38A863007A64B4 /* TwitterKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterKit.framework; sourceTree = "<group>"; };
 		11CFD6741A38A863007A64B4 /* TwitterKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TwitterKitResources.bundle; path = TwitterKit.framework/Versions/A/Resources/TwitterKitResources.bundle; sourceTree = "<group>"; };
 		11CFD6751A38A863007A64B4 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		11CFD67A1A3907B1007A64B4 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		11E3EC541A2CB059004BC39A /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		11E3EC5D1A2CC01C004BC39A /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		11E3EC6D1A2E2D9B004BC39A /* Alamofire-SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Alamofire-SwiftyJSON.swift"; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 				11CFD6781A38A863007A64B4 /* Fabric.framework in Frameworks */,
 				11CFD66E1A387A02007A64B4 /* Alamofire.framework in Frameworks */,
 				11CFD6711A387AAB007A64B4 /* SwiftyJSON.framework in Frameworks */,
+				11CFD67B1A3907B1007A64B4 /* Crashlytics.framework in Frameworks */,
 				11CFD6761A38A863007A64B4 /* TwitterKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -232,6 +235,7 @@
 		F51F112509D259DFB9563EE8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				11CFD67A1A3907B1007A64B4 /* Crashlytics.framework */,
 				11CFD6731A38A863007A64B4 /* TwitterKit.framework */,
 				11CFD6741A38A863007A64B4 /* TwitterKitResources.bundle */,
 				11CFD6751A38A863007A64B4 /* Fabric.framework */,

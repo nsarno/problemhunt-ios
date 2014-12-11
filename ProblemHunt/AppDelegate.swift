@@ -9,6 +9,7 @@
 import UIKit
 import Fabric
 import TwitterKit
+import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NewRelicAgent.startWithApplicationToken("AA74fa02fb1d905c5473c5604a6096ea32b62a0211")
         Twitter.sharedInstance().startWithConsumerKey("k4ofERNpKtSABriZv4p1oWypZ",
             consumerSecret: "EX96aWXx7CZK2L0kXHfkR0vqMmpuDvs85FjMMstSsinBG6E0hW")
-        Fabric.with([Twitter.sharedInstance()])
+        Fabric.with([Twitter.sharedInstance(), Crashlytics()])
         return true
     }
 
